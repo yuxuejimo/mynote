@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>数据分析</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+
+strong {
+  color:red
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+ //是否显示导航栏
+ var showNavBar = true;
+ //是否展开导航栏
+ var expandNavBar = false;
+
+ $(document).ready(function(){
+    var h1s = $("body").find("h1");
+    var h2s = $("body").find("h2");
+    var h3s = $("body").find("h3");
+    var h4s = $("body").find("h4");
+    var h5s = $("body").find("h5");
+    var h6s = $("body").find("h6");
+
+    var headCounts = [h1s.length, h2s.length, h3s.length, h4s.length, h5s.length, h6s.length];
+    var vH1Tag = null;
+    var vH2Tag = null;
+    for(var i = 0; i < headCounts.length; i++){
+        if(headCounts[i] > 0){
+            if(vH1Tag == null){
+                vH1Tag = 'h' + (i + 1);
+            }else{
+                vH2Tag = 'h' + (i + 1);
+            }
+        }
+    }
+    if(vH1Tag == null){
+        return;
+    }
+
+    $("body").prepend('<div class="BlogAnchor">' + 
+        '<span style="color:red;position:absolute;top:-6px;left:0px;cursor:pointer;" onclick="$(\'.BlogAnchor\').hide();">×</span>' +
+        '<p>' + 
+            '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录▲</b>' + 
+        '</p>' + 
+        '<div class="AnchorContent" id="AnchorContent"> </div>' + 
+    '</div>' );
+
+    var vH1Index = 0;
+    var vH2Index = 0;
+    $("body").find("h1,h2,h3,h4,h5,h6").each(function(i,item){
+        var id = '';
+        var name = '';
+        var tag = $(item).get(0).tagName.toLowerCase();
+        var className = '';
+        if(tag == vH1Tag){
+            id = name = ++vH1Index;
+            name = id;
+            vH2Index = 0;
+            className = 'item_h1';
+        }else if(tag == vH2Tag){
+            id = vH1Index + '_' + ++vH2Index;
+            name = vH1Index + '.' + vH2Index;
+            className = 'item_h2';
+        }
+        $(item).attr("id","wow"+id);
+        $(item).addClass("wow_head");
+        $("#AnchorContent").css('max-height', ($(window).height() - 180) + 'px');
+        $("#AnchorContent").append('<li><a class="nav_item '+className+' anchor-link" onclick="return false;" href="#" link="#wow'+id+'">'+name+" · "+$(this).text()+'</a></li>');
+    });
+
+    $("#AnchorContentToggle").click(function(){
+        var text = $(this).html();
+        if(text=="目录▲"){
+            $(this).html("目录▼");
+            $(this).attr({"title":"展开"});
+        }else{
+            $(this).html("目录▲");
+            $(this).attr({"title":"收起"});
+        }
+        $("#AnchorContent").toggle();
+    });
+    $(".anchor-link").click(function(){
+        $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 500);
+    });
+
+    var headerNavs = $(".BlogAnchor li .nav_item");
+    var headerTops = [];
+    $(".wow_head").each(function(i, n){
+        headerTops.push($(n).offset().top);
+    });
+    $(window).scroll(function(){
+        var scrollTop = $(window).scrollTop();
+        $.each(headerTops, function(i, n){
+            var distance = n - scrollTop;
+            if(distance >= 0){
+                $(".BlogAnchor li .nav_item.current").removeClass('current');
+                $(headerNavs[i]).addClass('current');
+                return false;
+            }
+        });
+    });
+
+    if(!showNavBar){
+        $('.BlogAnchor').hide();
+    }
+    if(!expandNavBar){
+        $(this).html("目录▼");
+        $(this).attr({"title":"展开"});
+        $("#AnchorContent").hide();
+    }
+ });
+</script>
+<style>
+    /*导航*/
+    .BlogAnchor {
+        background: #f1f1f1;
+        padding: 10px;
+        line-height: 180%;
+        position: fixed;
+        right: 48px;
+        top: 48px;
+        border: 1px solid #aaaaaa;
+    }
+    .BlogAnchor p {
+        font-size: 18px;
+        color: #15a230;
+        margin: 0 0 0.3rem 0;
+        text-align: right;
+    }
+    .BlogAnchor .AnchorContent {
+        padding: 5px 0px;
+        overflow: auto;
+    }
+    .BlogAnchor li{
+        text-indent: 0.5rem;
+        font-size: 14px;
+        list-style: none;
+    }
+    .BlogAnchor li .nav_item{
+        padding: 3px;
+    }
+    .BlogAnchor li .item_h1{
+        margin-left: 0rem;
+    }
+    .BlogAnchor li .item_h2{
+        margin-left: 2rem;
+        font-size: 0.8rem;
+    }
+    .BlogAnchor li .nav_item.current{
+        color: white;
+        background-color: #5cc26f;
+    }
+    #AnchorContentToggle {
+        font-size: 13px;
+        font-weight: normal;
+        color: #FFF;
+        display: inline-block;
+        line-height: 20px;
+        background: #5cc26f;
+        font-style: normal;
+        padding: 1px 8px;
+    }
+    .BlogAnchor a:hover {
+        color: #5cc26f;
+    }
+    .BlogAnchor a {
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+<h1>1</h1>
+<h3>1、数据分析划分为：描述性数据分析、探索性数据分析、验证性数据分析。</h3>
+<h3>2、数据分析在企业的日常经营分析中作用：现状分析、原因分析、预测分析</h3>
+<h3>3、数据分析步骤：明确分析目的和思路=》数据收集=》数据处理=》数据分析=》数据展现=》报告撰写</h3>
+<h3>4、分析框架体系化：以营销、管理理论作为指导，结合实际业务情况，搭建分析框架</h3>
+<h3>5、常用的营销理论模型：4P、用户使用行为、STP理论、AWOT等</h3>
+<h3>6、管理理论模型： PEST、5W2H、时间管理、生命周期、逻辑树、金字塔、SMART</h3>
+<h3>7、数据来源：数据库、互联网、市场调查、公开出版物</h3>
+<h3>8、数据处理：数据清洗、数据转化、数据提取、数据计算</h3>
+<h3>9、数据挖掘是一种高级的数据分析方法，侧重解决分类、聚类、关联、预测</h3>
+<h3>10、常用指标：</h3>
+<ul>
+<li>平均数：将总体各单位的数量差异抽象化，代表总体的一般水平，掩盖总体内各单位的差异</li>
+<li>绝对数：总体在一定时间、地点的综合性指标，比如GDP、总人口</li>
+<li>相对数：两个有联系的指标对比计算得到的数值，反映对象之间数量联系程度的综合指标，比如总人数（绝对数）50人，相对数7成、6倍、1:4等。</li>
+<li>百分比、百分点：相对数中的一种</li>
+<li>频数：一组数据中个别数据重复出现的次数（绝对数），频率（相对数）每组类别次数与总次数的比值</li>
+<li>比例和比率</li>
+<li>倍数和番数（2的N次方倍）</li>
+<li>同比：与历史同期相比得到的数值。环比是与前一个统计期进行比较得到的数值，反映事物逐期发展的情况。</li>
+</ul>
+<h1>2</h1>
+<h3>1、常用的数据分析方法论：</h3>
+<ul>
+<li>（行业分析）PEST分析法：对行业宏观环境的分析。一般包括政治、经济、技术和社会。</li>
+<li>（广泛）5W2H：why（为何）、what（何事）、何人（who）、何时（when）、何地（where）、如何做（how）、何价（how much）</li>
+<li>
+（业务问题专题分析）逻辑树：将问题的所有子问题分层罗列。遵循以下原则：
+<ul>
+<li>要素化：相同问题归纳为要素。</li>
+<li>框架化：要素组织为框架，不重不漏</li>
+<li>关联化：各要素保持必要的相互关系
+缺点：可能不全面</li>
+</ul>
+</li>
+<li>（整体经营情况分析）4P营销理论：产品、价格、促销、渠道</li>
+<li>（用户行为）用户行为理论：认知、熟悉、试用、使用、忠诚</li>
+</ul>
+<h1>3、数据准备</h1>
+<h1>4、数据处理</h1>
+<h3>1、数据处理步骤：</h3>
+<ul>
+<li>数据清洗：将对于重复数据筛选删除，补充缺失数据，纠正错误数据</li>
+<li>数据加工：对数据进行信息提取、计算、分组、转换，形成要求的数据格式</li>
+</ul>
+<h3>2、处理缺失值的方法</h3>
+<ul>
+<li>用一个样本统计量的值代替，通常为样本平均值</li>
+<li>用一个统计模型计算出的值代替，常用的模型有回归模型。判别模型</li>
+<li>删除</li>
+<li>暂时保留，在相应的分析中排除（数据量大，缺失的值不多）</li>
+</ul>
+<h1>5、数据分析方法、工具</h1>
+<h3>1、数据分析法</h3>
+<table>
+<thead>
+<tr>
+	<th>数据分析作用</th>
+	<th>基本方法</th>
+	<th>数据分析方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>现状分析</td>
+	<td>对比</td>
+	<td>对比分析、平均分析、综合评价分析</td>
+</tr>
+<tr>
+	<td>原因分</td>
+	<td>细分</td>
+	<td>分组分析、结构分析、交叉分析、杜邦分析、漏斗图分析、矩阵关联分析、聚类分析</td>
+</tr>
+<tr>
+	<td>预测分析</td>
+	<td>预测</td>
+	<td>回归分析、时间序列、决策树、神经网络</td>
+</tr>
+</tbody>
+</table>
+<h3>2、对比分析法</h3>
+<ul>
+<li>特点：可以非常直观地看出事物某方面的变化或差距，并可以准确、量化得表示出这种变化或差距</li>
+<li>
+分类：静态比较和动态比较
+<ul>
+<li>静态比较：在同一时间条件下对不同总体指标的比较，横向比较</li>
+<li>动态比较：在同一总体条件下对不同时期指标数值的比较，纵向比较</li>
+</ul>
+</li>
+<li>
+注意事项
+<ul>
+<li>指标的范围，计算方法，计量单位一致</li>
+<li>对比的对象有可比性</li>
+<li>对比的指标类型要一致</li>
+</ul>
+</li>
+</ul>
+<h3>3、分组分析法</h3>
+<ul>
+<li>特点：根据数据分析对象的特征，按照一定的指标，把数据分析对象划分为不同的部分和类型进行研究，揭示内在的联系和规律</li>
+<li>关键：确定组数与组距</li>
+<li>
+等距分组步骤
+<ul>
+<li>确定组数，根据数据的大小</li>
+<li>确定组间距，组距=（最大值-最小值）/组数</li>
+<li>划分</li>
+</ul>
+</li>
+<li>不等距分组</li>
+</ul>
+<h3>4、结构分析法</h3>
+<ul>
+<li>特点：分析总体内的各部分与总体之间进行对比（各部分占总体的比重）</li>
+</ul>
+<h3>5、平均分析法</h3>
+<ul>
+<li>特点：运用计算平均数的方法来反映总体在一定时间、地点条件下某一数量特征的一般水平。</li>
+<li>作用：对比同类现象在不同条件之间的差异程度，比用总量指标更有说服力</li>
+<li>平均指标包括：算数平均数、调和平均数、几何平均数、众数和中位数</li>
+</ul>
+<h3>6、交叉分析法</h3>
+<ul>
+<li>特点：通常用于分析两个变量之间的关系（两张二维表有相同的字段，合并在一起）</li>
+</ul>
+<h3>7、综合评价分析法</h3>
+<ul>
+<li>特点：运用多个指标对多个参评单位进行评价的方法</li>
+<li>
+步骤：
+<ul>
+<li>确定综合评价指标体系，即包含哪些指标</li>
+<li>收集数据，对不同计量单位的指标数据进行标准化处理</li>
+<li>确定指标体系中各指标的权重</li>
+<li>汇总计算综合评价指数</li>
+<li>根据数据进行排序，得出结论</li>
+</ul>
+</li>
+<li>权重确定方法：专家访谈法、德尔菲法、层次分析法，主成分分析法、因子分析法、回归分析法</li>
+<li>目标优化矩阵：将纵轴上的项目依次与横轴上的项目对比，由专家投票表决，纵轴上的项目比横轴上的项目重要，那么可以在两个项目相交的格子中填1，否则填0，最后将每行数字进行相加，根据合计数据进行排序。</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th>人才评价</th>
+	<th>人品</th>
+	<th>动手能力</th>
+	<th>创新意识</th>
+	<th>教育背景</th>
+	<th>合计</th>
+	<th>排序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>人品</td>
+	<td>x</td>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>2</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>动手能力</td>
+	<td>1</td>
+	<td>x</td>
+	<td>1</td>
+	<td>1</td>
+	<td>3</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>创新意识</td>
+	<td>0</td>
+	<td>0</td>
+	<td>x</td>
+	<td>1</td>
+	<td>1</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>教育背景</td>
+	<td>0</td>
+	<td>0</td>
+	<td>0</td>
+	<td>x</td>
+	<td>0</td>
+	<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3>8、杜邦分析法</h3>
+<ul>
+<li>特点：利用各主要财务指标间的内在联系，对企业财务状况及经济效益进行综合分析评价的方法</li>
+<li>内容：将若干个用于评价企业经营效率和财务状况的比率按其内在联系有机地结合起来，形成一个完整的指标体系，并最终通过权益收益率来综合反映。</li>
+<li>优点：采用金字塔结构，⑩财务哔哩哔哩分析的层次更清晰、条理更突出，简洁明了地表达各财务指标之间的关系。</li>
+</ul>
+<h3>9、漏斗图分析法</h3>
+<ul>
+<li>特点：业务流程分析，适合业务流程比较规范、周期长、流程复杂</li>
+</ul>
+<h3>10、矩阵关联分析法</h3>
+<ul>
+<li>内容：根据事物的两个重要属性作为分析的依据，进行分类关联分析。属性A和属性B分别为x，y轴，根据属性的程度划分，分为4个象限，将要分析的事物投射到象限内。</li>
+<li>特点：解决资源分配</li>
+</ul>
+<h3>11、高级数据分析方法</h3>
+<table>
+<thead>
+<tr>
+	<th>研究方向</th>
+	<th>数据分析方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>产品研究</td>
+	<td>相关分析、对应分析、判别分析、结合分析、多维尺度分析</td>
+</tr>
+<tr>
+	<td>品牌研究</td>
+	<td>相关分析、聚类分析、判别分析、因子分析、对应分析、多维尺度分析</td>
+</tr>
+<tr>
+	<td>价格研究</td>
+	<td>相关分析、PSM价格分析等</td>
+</tr>
+<tr>
+	<td>市场细分</td>
+	<td>聚类分析、判别分析、因子分析、对应分析、多维尺度分析、logistic回归、决策树</td>
+</tr>
+<tr>
+	<td>满意度研究</td>
+	<td>相关分析、回归分析、主成分分析、因子分析、结果方程等</td>
+</tr>
+<tr>
+	<td>用户研究</td>
+	<td>相关分析、聚类分析、判别分析、因子分析、对应分析、logistic回归、决策树、关联规则</td>
+</tr>
+<tr>
+	<td>预测决策</td>
+	<td>回归分析、决策树、神经网络、时间序列、logistic回归</td>
+	<td></td>
+</tr>
+</tbody>
+</table>
+<h1>6、数据展现</h1>
+<h3>1、通过关系选择图表</h3>
+<ul>
+<li>类型：成分（饼图、柱形图、条形图）、排序（柱形图、条形图、气泡图）、时间序列（柱形图、折线图）、频率分布（柱形图、条形图、折线图）、相关性（柱形图、条形图、散点图、气泡图）、多重数据比较（雷达图）</li>
+</ul>
+<h3>2、制作图表步骤</h3>
+<ul>
+<li>确定要表达的主题或目的</li>
+<li>确定图表类型</li>
+<li>制作图表</li>
+<li>检查是否真实有效地展示数据</li>
+<li>检查是否表达了观点</li>
+</ul>
+<h3>3、主次图</h3>
+<ul>
+<li>按照发生频率的高低顺序绘制的直方图，可以用来分析质量问题中的主要因素</li>
+</ul>
+<h3>4、旋风图（对称条形图）</h3>
+<ul>
+<li>同一事物在某个活动后的变化</li>
+<li>因果关系（例如价格和销量）</li>
+<li>两个类别之间不同指标的比较（例如某班男生和女生各项学科成绩对比）</li>
+</ul>
+<h1>7、图表专业化</h1>
+<h3>1、图表信息</h3>
+<ul>
+<li>包含标题、图例、横纵坐标数值的单位、脚注（特殊数据背后的原因）、资料来源（可选）</li>
+</ul>
+<h3>2、饼图注意事项</h3>
+<ul>
+<li>按照时钟表盘的刻度，把数据从12点钟的位置开始排列，最重要的成分紧靠12点钟的位置（符合阅读习惯）</li>
+<li>数据项最好在5项以内，超过5项的做复合饼图</li>
+<li>不使用图例，直接标注</li>
+<li>尽量不使用标签连线、3D效果</li>
+<li>扇区使用白色边框线</li>
+</ul>
+<h3>3、柱形图</h3>
+<ul>
+<li>同一数据序列使用相同的颜色</li>
+<li>不使用倾斜的标签</li>
+<li>横轴标签文字过长可以使用条形图代替</li>
+<li>纵坐标刻度一般从0开始</li>
+<li>最好添加数值（若有数值则可以去掉纵坐标刻度线和网格线）</li>
+</ul>
+<h3>4、条形图</h3>
+<ul>
+<li>同一数据序列使用相同的颜色</li>
+<li>尽量让数据由大到小排序</li>
+<li>不使用倾斜标签</li>
+<li>最好添加数据标签</li>
+</ul>
+<h3>5、折线图</h3>
+<ul>
+<li>折线图相对粗一些，比网格线、坐标轴更突出</li>
+<li>线条一般不超过5条</li>
+<li>不使用倾斜标签</li>
+<li>纵坐标轴一般刻度从0开始</li>
+<li>实际值用实线，预测值用虚线</li>
+</ul>
+<h1>8、数据分析报告</h1>
+<h3>1、数据分析报告</h3>
+<ul>
+<li>根据数据分析原理和方法，运用数据来反映、研究和分析某项事物的现状、问题、原因、本质和规律，并得出结论，提出解决办法</li>
+</ul>
+<h3>2、原则</h3>
+<ul>
+<li>规范性（前后一致、术语规范）</li>
+<li>重要性（体现数据分析的重点）</li>
+<li>谨慎</li>
+<li>创新</li>
+</ul>
+<h3>3、作用</h3>
+<ul>
+<li>展示分析结果</li>
+<li>验证分析质量</li>
+<li>提供决策参考</li>
+</ul>
+<h3>4、分类</h3>
+<ul>
+<li>专题分析报告</li>
+<li>综合分析报告</li>
+<li>日常数据通报</li>
+</ul>
+<h3>5、专题分析报告</h3>
+<ul>
+<li>是对某一方面或某一问题进行专门研究，为决策提供参考和依据</li>
+<li>单一性：不要求反映事物的全貌，针对某一问题</li>
+<li>深入性：对问题进行具体描述，对原因进行分析，并提出切实可行的解决办法</li>
+</ul>
+<h3>6、综合分析报告</h3>
+<ul>
+<li>全面评价</li>
+<li>全面性</li>
+<li>联系性：相关联的现象综合分析。联系的重点是比例关系和平衡关系，分析他们是否协调</li>
+</ul>
+<h3>7、日常数据通报</h3>
+<ul>
+<li>以定期数据分析报表为依据，翻译计划执行情况，并分析其影响和形成原因</li>
+<li>进度性：计划执行的进度与时间的进展结合</li>
+<li>
+规范性：
+<ul>
+<li>反映计划执行的基本情况</li>
+<li>分析完成或未完成的原因</li>
+<li>总结计划执行中的成绩和经验，找出存在的问题</li>
+<li>提出措施和建议</li>
+</ul>
+</li>
+<li>时效性</li>
+</ul>
+<h3>8、报告结构</h3>
+<ul>
+<li>
+标题
+<ul>
+<li>解释基本观点</li>
+<li>概括主要内容</li>
+<li>交代分析主题</li>
+<li>提出问题</li>
+</ul>
+</li>
+<li>
+目录
+<ul>
+<li>一、分析背景与目的</li>
+<li>二、分析思路</li>
+<li>
+三、分析正文
+<ul>
+<li>1、产品分析</li>
+<li>2、渠道分析</li>
+<li>3、价格分析</li>
+<li>4、促销分析</li>
+<li>四、总结与建议</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+前言
+<ul>
+<li>此次分析的意义</li>
+<li>要解决什么问题，达到什么目的</li>
+<li>怎么分析，从什么方面入手</li>
+</ul>
+</li>
+<li>正文</li>
+<li>结论</li>
+<li>建议</li>
+<li>附录</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
